@@ -35,7 +35,7 @@ const Navbar = () => {
               height={36}
             />
             <p className="dark:text-white text-nft-black-1 font-semibold text-lg ml-1">
-              CryptoCraze
+            AsquareCrypto
             </p>
           </div>
         </Link>
