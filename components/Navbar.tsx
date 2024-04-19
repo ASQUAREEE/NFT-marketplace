@@ -15,6 +15,7 @@ import MenuItems from "./helper/MenuItems";
 import ButtonGroup from "./helper/ButtonGroup";
 
 const Navbar = () => {
+  
   const { theme, setTheme } = useTheme();
   const router = useRouter();
 

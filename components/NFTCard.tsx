@@ -1,7 +1,9 @@
-import React from 'react';
+
+import React, { useContext } from 'react'
 import images from '../assets'
 import Link from 'next/link';
 import Image from 'next/image';
+import { NFTContext } from '@/context/NFTContext';
 
 // Define the interface for the NFT object
 type NFT = {
@@ -19,6 +21,8 @@ type NFTCardProps = {
 }
 
 const NFTCard: React.FC<NFTCardProps> = ({ nft }) => {
+
+  const {nftCurrency} = useContext(NFTContext);
 
   const { i, name, seller, owner, description, price } = nft;
 
@@ -48,7 +52,7 @@ const NFTCard: React.FC<NFTCardProps> = ({ nft }) => {
 
 
         <div className='flexBetween mt-1 minlg:mt-3 fllex-row xs:flex-col xs:items-start xs:mt-3'>
-            <p className="font-poppins dark:text-white text-nft-black-1 font-semibold text-xs minlg:text-lg">{price} <span className="normal">ETH</span></p>
+            <p className="font-poppins dark:text-white text-nft-black-1 font-semibold text-xs minlg:text-lg">{price} <span className="normal">{nftCurrency}</span></p>
 
             <p className="font-poppins dark:text-white text-nft-black-1 font-semibold text-xs minlg:text-lg">{seller}</p>
         </div>

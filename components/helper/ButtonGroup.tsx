@@ -1,15 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import Button from "./Button";
 import { NextRouter } from "next/router";
+import { NFTContext } from "@/context/NFTContext";
 
 type Myprop = {
     setActive: React.Dispatch<React.SetStateAction<any>>;
     router: NextRouter;
+    connectWallet?:()=>void;
+    currentAccount?:any;
 }
 
 const ButtonGroup = ({setActive, router}:Myprop) => {
-  const hasConnected = true;
-  return hasConnected ? (
+  
+  const {connectWallet, currentAccount} = useContext(NFTContext);
+  
+  return currentAccount ? (
     <Button btnName="Create" classStyles="mx-2 rounded-xl" 
     handleClick={()=>{
         setActive('');
@@ -19,7 +24,7 @@ const ButtonGroup = ({setActive, router}:Myprop) => {
   ) : (
     <Button btnName="Connect" classStyles="mx-2 rounded-xl" 
     handleClick={()=>{
-        setActive('');
+      connectWallet();
     }}
     />
   );
